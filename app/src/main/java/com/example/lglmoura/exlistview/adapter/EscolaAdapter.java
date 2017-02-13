@@ -19,7 +19,7 @@ import java.util.ArrayList;
  */
 
 public class EscolaAdapter extends ArrayAdapter<Escola> {
-    
+
     private final Context context;
     private final ArrayList<Escola> elementos;
 
