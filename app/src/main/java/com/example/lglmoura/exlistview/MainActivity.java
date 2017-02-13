@@ -2,8 +2,11 @@ package com.example.lglmoura.exlistview;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.lglmoura.exlistview.adapter.EscolaAdapter;
 import com.example.lglmoura.exlistview.model.Escola;
@@ -16,9 +19,19 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ListView lista = (ListView) findViewById(R.id.lvEscolas);
-        ArrayList<Escola> escolas = adicionarEscolas();
+        final ArrayList<Escola> escolas = adicionarEscolas();
         ArrayAdapter adapter = new EscolaAdapter(this, escolas);
         lista.setAdapter(adapter);
+
+        lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView,
+                                    View view, int i, long l) {
+                Toast.makeText(getBaseContext(), "Escola: "+escolas.get(i).getNome(),
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
     private ArrayList<Escola> adicionarEscolas() {
