@@ -1,6 +1,7 @@
 package com.example.lglmoura.exlistview;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -29,6 +30,10 @@ public class MainActivity extends Activity {
                                     View view, int i, long l) {
                 Toast.makeText(getBaseContext(), "Escola: "+escolas.get(i).getNome(),
                         Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(MainActivity.this, Main2Activity.class);
+                intent.putExtra("nome", escolas.get(i).getNome());
+                startActivity(intent);
             }
         });
 
